@@ -6,9 +6,9 @@ class SearchBar extends React.Component {
 
         return (
             <div className="item" style={{minWidth: 500, }}>
-                <div class="ui icon small input">
+                <div className="ui icon small input">
                     <input type="text" placeholder="Search..." />
-                    <i class="search icon"></i>
+                    <i className="search icon"></i>
                 </div>
             </div>
         )
