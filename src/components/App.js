@@ -2,13 +2,17 @@ import React from 'react';
 import axios from 'axios';
 import Header from './Header';
 import SearchBar from './SearchBar';
+import AppData from './AppData';
 
 
 class App extends React.Component {
 
     state = {
         country: '',
-        county: ''
+        county: '',
+        confirmed: 0,
+        deaths: 0,
+        recovered: 0
     }
 
     componentDidMount() {
@@ -22,7 +26,10 @@ class App extends React.Component {
                 if (countyData) {
                     this.setState({
                         country: countyData.country,
-                        county: countyData.county
+                        county: countyData.county,
+                        confirmed: countyData.stats.confirmed,
+                        deaths: countyData.stats.deaths,
+                        recovered: countyData.stats.recovered
                     });
                 } else {
                     console.error("Unable to grab countryData");
@@ -42,12 +49,10 @@ class App extends React.Component {
                             <SearchBar />
                         </div>
                     </div>
-                    <div>
-                        Country: {this.state.country}
-                        <div>
-                            County: {this.state.county}
-                        </div>
-                    </div>
+                    <AppData
+                    confirmedCases = {this.state.confirmed}
+                    fatalCases = {this.state.deaths}
+                    recoveredCases = {this.state.recovered} />
                 </div>
                 <div className="ui three wide column"></div>
             </div>
