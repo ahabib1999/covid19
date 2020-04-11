@@ -2,27 +2,39 @@ import React from 'react';
 
 class StatsCard extends React.Component {
 
-    getClassName() {
-        const className = "ui raised huge card";
-        if (this.props.color) {
-            className += this.props.color
-        };
-        return className;
+    state = {
+        cardClass: "ui raised centered card",
+        statisticClass: "ui bold small statistic"    
+    }
+
+    getClassName = () => {
     };
+    
+    componentDidMount() {
+        let divClassName = this.state.cardClass;
+        let statisticClassName = this.state.statisticClass;
+
+        if (this.props.color) {
+            divClassName += " " + this.props.color
+            statisticClassName += " " + this.props.color
+            this.setState({
+                cardClass: divClassName,
+                statisticClass: statisticClassName
+            });
+        };
+    }
     
     render() {
         
         return(
 
-        <div className = {getClassName()} >
+        <div className={this.state.cardClass} style = {{textAlign: "center", marginTop: 100}} >
             <div className = "ui content">
                 <div className = "header">{this.props.header}</div>
                 <div className = "description">
-                    <div className = "ui big stastics">
-                        <div className = "statistic">
-                            <div className = "value">
-                                {this.props.currentStat}
-                            </div>
+                    <div className = {this.state.statisticClass}>
+                        <div className = "value">
+                            {this.props.currentStat}
                         </div>
                     </div>
                 </div>
