@@ -3,28 +3,45 @@ import React from 'react';
 class SearchBar extends React.Component {
 
     state = {
-        term: ''
+        searchTerm: ''
     }
 
     handleSearchChange = (event) => {
-        const searchTerm = event.target.value;
+        const userInput = event.target.value;
 
-        if (searchTerm){
-            this.setState({term: searchTerm})
+        if (userInput){
+            this.setState({searchTerm: userInput})
         }
+    }
+
+    displayMenu() {
+        return (
+            <div className = "ui vertical menu">
+                <div className="menu">
+                    <li className = "item">France</li>
+                    <li className = "item">Australia</li>
+                </div>
+            </div>
+        )
     }
 
     render() {
 
         return (
             <div className="ui item" style={{minWidth: 500, }}>
-                <div className="ui icon small input">
+                <div className="ui fluid search selection dropdown">
                     <input 
-                    type="text"
-                    placeholder="Search..."
-                    value = {this.state.term}
-                    onChange = {this.handleSearchChange} />
-                    <i className="search icon"></i>
+                    type="hidden"
+                    name = "County" />
+                    {/* /* value = {this.state.term}
+                     onChange = {this.handleSearchChange} */ }
+                    <i className="dropdown icon"></i>
+                    <div className="default text">Select County</div>
+                    <div className = "menu">
+                        <div className = "item">Bay</div>
+                        <div className = "item">Broward</div>
+                        <div className = "item">Rutherford</div>
+                    </div>
                 </div>
             </div>
         )
