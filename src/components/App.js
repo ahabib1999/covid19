@@ -19,8 +19,19 @@ class App extends React.Component {
 
     fetchDataByCounty = (selectedCounty) => {
         const axiosUrl = "https://disease.sh/v2/jhucsse/counties/" + selectedCounty  
-        console.log(axiosUrl);
+        axios.get(axiosUrl)
+        .then((res) => {
+            const responseData = res.data;
+            const countyData = responseData[0];
+            if (countyData) {
+               this.updateCountyData(countyData);
+            } else {
+                console.error("Unable to grab countyData");
+            }
+        });
+            
     }
+    
 
     handleCountyChange = async (event) => {
         await this.setState({
@@ -30,22 +41,25 @@ class App extends React.Component {
         this.fetchDataByCounty(this.state.selectedCounty);
     }
 
+    updateCountyData = (countyData) => {
+        this.setState({
+            country: countyData.country,
+            county: countyData.county,
+            confirmed: countyData.stats.confirmed,
+            deaths: countyData.stats.deaths,
+            recovered: countyData.stats.recovered
+        });
+    }
+
     componentDidMount() {
         axios.get(
             "https://disease.sh/v2/jhucsse/counties/Bay"
-
         )
             .then((res) => {
                 const responseData = res.data;
                 const countyData = responseData[0];
                 if (countyData) {
-                    this.setState({
-                        country: countyData.country,
-                        county: countyData.county,
-                        confirmed: countyData.stats.confirmed,
-                        deaths: countyData.stats.deaths,
-                        recovered: countyData.stats.recovered
-                    });
+                   this.updateCountyData(countyData);
                 } else {
                     console.error("Unable to grab countyData");
                 }
