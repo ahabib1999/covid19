@@ -1,48 +1,34 @@
 import React from 'react';
+import { countiesList } from './countiesList';
 
 class SearchBar extends React.Component {
 
     state = {
-        searchTerm: ''
+        county: countiesList[0]
+    }
+    // [obj1, onb2  ]
+
+    reutrnCountyList = (county) => {
+        return countiesList.map((county) => {
+            return (
+                <option key={county} value={county}>{county}</option>
+            );
+        })
     }
 
-    handleSearchChange = (event) => {
-        const userInput = event.target.value;
-
-        if (userInput){
-            this.setState({searchTerm: userInput})
-        }
-    }
-
-    displayMenu() {
-        return (
-            <div className = "ui vertical menu">
-                <div className="menu">
-                    <li className = "item">France</li>
-                    <li className = "item">Australia</li>
-                </div>
-            </div>
-        )
+    handleCountyChange = (event) => {
+        this.setState({
+            county: event.target.value
+        });
     }
 
     render() {
 
         return (
-            <div className="ui item" style={{minWidth: 500, }}>
-                <div className="ui fluid search selection dropdown">
-                    <input 
-                    type="hidden"
-                    name = "County" />
-                    {/* /* value = {this.state.term}
-                     onChange = {this.handleSearchChange} */ }
-                    <i className="dropdown icon"></i>
-                    <div className="default text">Select County</div>
-                    <div className = "menu">
-                        <div className = "item">Bay</div>
-                        <div className = "item">Broward</div>
-                        <div className = "item">Rutherford</div>
-                    </div>
-                </div>
+            <div className="ui item" style={{ minWidth: 500, }}>
+                <select value={this.state.county} onChange={this.handleCountyChange} className="ui fluid search dropdown">
+                    {this.reutrnCountyList()}
+                </select>
             </div>
         )
     }

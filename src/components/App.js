@@ -32,7 +32,7 @@ class App extends React.Component {
                         recovered: countyData.stats.recovered
                     });
                 } else {
-                    console.error("Unable to grab countryData");
+                    console.error("Unable to grab countyData");
                 }
             });
     }
