@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from './Header';
 import SearchBar from './SearchBar';
 import AppData from './AppData';
+import { countiesList } from './countiesList';
 
 
 class App extends React.Component {
@@ -12,12 +13,26 @@ class App extends React.Component {
         county: '',
         confirmed: 0,
         deaths: 0,
-        recovered: 0
+        recovered: 0,
+        selectedCounty: countiesList[0]
+    }
+
+    fetchDataByCounty = (selectedCounty) => {
+        const axiosUrl = "https://disease.sh/v2/jhucsse/counties/" + selectedCounty  
+        console.log(axiosUrl);
+    }
+
+    handleCountyChange = async (event) => {
+        await this.setState({
+            selectedCounty: event.target.value
+        });
+
+        this.fetchDataByCounty(this.state.selectedCounty);
     }
 
     componentDidMount() {
         axios.get(
-            "https://corona.lmao.ninja/v2/jhucsse/counties/Bay"
+            "https://disease.sh/v2/jhucsse/counties/Bay"
 
         )
             .then((res) => {
@@ -46,7 +61,8 @@ class App extends React.Component {
                     <div className="ui inverted huge menu">
                         <Header />
                         <div className="right menu">
-                            <SearchBar />
+                            <SearchBar selectedCounty = {this.state.selectedCounty}
+                            onChange = {this.handleCountyChange}  />
                         </div>
                     </div>
                     <AppData

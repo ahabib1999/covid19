@@ -3,10 +3,9 @@ import { countiesList } from './countiesList';
 
 class SearchBar extends React.Component {
 
-    state = {
-        county: countiesList[0]
+    constructor(props) {
+        super(props);
     }
-    // [obj1, onb2  ]
 
     reutrnCountyList = (county) => {
         return countiesList.map((county) => {
@@ -16,17 +15,11 @@ class SearchBar extends React.Component {
         })
     }
 
-    handleCountyChange = (event) => {
-        this.setState({
-            county: event.target.value
-        });
-    }
-
     render() {
 
         return (
             <div className="ui item" style={{ minWidth: 500, }}>
-                <select value={this.state.county} onChange={this.handleCountyChange} className="ui fluid search dropdown">
+                <select value={this.props.selectedCounty} onChange={this.props.onChange} className="ui fluid search dropdown">
                     {this.reutrnCountyList()}
                 </select>
             </div>
