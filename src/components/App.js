@@ -66,6 +66,10 @@ class App extends React.Component {
             });
     }
 
+    displayAllKeys = (countyStateData) => {
+        console.log(countyStateData)
+    }
+
     render() {
 
         return (
@@ -76,7 +80,7 @@ class App extends React.Component {
                         <Header />
                         <div className="right menu">
                             <SearchBar selectedCounty = {this.state.selectedCounty}
-                            onChange = {this.handleCountyChange}  />
+                            onChange = {this.handleCountyChange}   />
                         </div>
                     </div>
                     <AppData
