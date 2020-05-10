@@ -12,8 +12,8 @@ class App extends React.Component {
     confirmed: 0,
     deaths: 0,
     recovered: 0,
-    selectedCounty: 'Select a county',
-    selectedState: "",
+    selectedCounty: 'Select County',
+    selectedState: "Select State",
     countiesList: []
   };
 
@@ -38,7 +38,7 @@ class App extends React.Component {
       if (countyData) {
         this.updateCountyData(countyData);
       } else {
-        console.error("Unable to grab countyData");
+        alert("This is not a correct county, select another county")
       }
     });
   };

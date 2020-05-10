@@ -14,7 +14,12 @@ class SearchBar extends React.Component {
       statesList.push(`${key}`);
     }
 
-    return statesList.map((currentState) => {
+
+    return statesList.map((currentState, selectedState) => {
+      if (selectedState == "") {
+        return <option key = "Select State" value = "Select State">Select State</option>
+      }
+
       return (
         <option key={currentState} value={currentState}>
           {currentState}
@@ -23,8 +28,9 @@ class SearchBar extends React.Component {
     });
   };
 
+
   displayCountiesList = (countiesList) => {
-    if (countiesList.length === 0) {
+    if (countiesList.length == 0 || this.props.selectedCounty == "") {
       return <option>Select County</option>
     }
     return countiesList.map((county) => {
@@ -49,7 +55,7 @@ class SearchBar extends React.Component {
           </select>
         </div>
         <div className="ui item" style={{ minWidth: 300 }}>
-          <select
+          <select id = "county"
             value={this.props.selectedCounty}
             onChange={this.props.onCountyChange}
             className="ui fluid search dropdown" >

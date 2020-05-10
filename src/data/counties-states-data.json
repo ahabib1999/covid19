@@ -1,5 +1,6 @@
 {
     "Alabama": [
+        "Select County",
         "Autauga County",
         "Baldwin County",
         "Barbour County",
@@ -68,38 +69,8 @@
         "Wilcox County",
         "Winston County"
     ],
-    "Alaska": [
-        "Aleutians East Borough",
-        "Aleutians West Census Area",
-        "Anchorage Municipality",
-        "Bethel Census Area",
-        "Bristol Bay Borough",
-        "Denali Borough",
-        "Dillingham Census Area",
-        "Fairbanks North Star Borough",
-        "Haines Borough",
-        "Hoonah-Angoon Census Area",
-        "Juneau City and Borough",
-        "Kenai Peninsula Borough",
-        "Ketchikan Gateway Borough",
-        "Kodiak Island Borough",
-        "Kusilvak Census Area",
-        "Lake and Peninsula Borough",
-        "Matanuska-Susitna Borough",
-        "Nome Census Area",
-        "North Slope Borough",
-        "Northwest Arctic Borough",
-        "Petersburg Borough",
-        "Prince of Wales-Hyder Census Area",
-        "Sitka City and Borough",
-        "Skagway Municipality",
-        "Southeast Fairbanks Census Area",
-        "Valdez-Cordova Census Area",
-        "Wrangell City and Borough",
-        "Yakutat City and Borough",
-        "Yukon-Koyukuk Census Are"
-    ],
     "Arizona": [
+        "Select County",
         "Apache County",
         "Cochise County",
         "Coconino County",
@@ -117,6 +88,7 @@
         "Yuma County"
     ],
     "Arkansas": [
+        "Select County",
         "Arkansas County",
         "Ashley County",
         "Baxter County",
@@ -194,6 +166,7 @@
         "Yell County"
     ],
     "California": [
+        "Select County",
         "Alameda County",
         "Alpine County",
         "Amador County",
@@ -254,6 +227,7 @@
         "Yuba County"
     ],
     "Colorado": [
+        "Select County",
         "Adams County",
         "Alamosa County",
         "Arapahoe County",
@@ -320,6 +294,7 @@
         "Yuma County"
     ],
     "Connecticut": [
+        "Select County",
         "Fairfield County",
         "Hartford County",
         "Litchfield County",
@@ -330,11 +305,13 @@
         "Windham County"
     ],
     "Delaware": [
+        "Select County",
         "Kent County",
         "New Castle County",
         "Sussex County"
     ],
     "Florida": [
+        "Select County",
         "Alachua County",
         "Baker County",
         "Bay County",
@@ -404,6 +381,7 @@
         "Washington County"
     ],
     "Georgia": [
+        "Select County",
         "Appling County",
         "Atkinson County",
         "Bacon County",
@@ -565,6 +543,7 @@
         "Worth County"
     ],
     "Hawaii": [
+        "Select County",
         "Hawaii County",
         "Honolulu County",
         "Kalawao County",
@@ -572,6 +551,7 @@
         "Maui County"
     ],
     "Idaho": [
+        "Select County",
         "Ada County",
         "Adams County",
         "Bannock County",
@@ -618,6 +598,7 @@
         "Washington County"
     ],
     "Illinois": [
+        "Select County",
         "Adams County",
         "Alexander County",
         "Bond County",
@@ -722,6 +703,7 @@
         "Woodford County"
     ],
     "Indiana": [
+        "Select County",
         "Adams County",
         "Allen County",
         "Bartholomew County",
@@ -816,6 +798,7 @@
         "Whitley County"
     ],
     "Iowa": [
+        "Select County",
         "Adair County",
         "Adams County",
         "Allamakee County",
@@ -917,6 +900,7 @@
         "Wright County"
     ],
     "Kansas": [
+        "Select County",
         "Allen County",
         "Anderson County",
         "Atchison County",
@@ -1024,6 +1008,7 @@
         "Wyandotte County"
     ],
     "Kentucky": [
+        "Select County",
         "Adair County",
         "Allen County",
         "Anderson County",
@@ -1146,6 +1131,7 @@
         "Woodford County"
     ],
     "Louisiana": [
+        "Select County",
         "Acadia Parish",
         "Allen Parish",
         "Ascension Parish",
@@ -1212,6 +1198,7 @@
         "Winn Parish"
     ],
     "Maine": [
+        "Select County",
         "Androscoggin County",
         "Aroostook County",
         "Cumberland County",
@@ -1230,6 +1217,7 @@
         "York County"
     ],
     "Maryland": [
+        "Select County",
         "Allegany County",
         "Anne Arundel County",
         "Baltimore County",
@@ -1256,6 +1244,7 @@
         "Baltimore city"
     ],
     "Massachusetts": [
+        "Select County",
         "Barnstable County",
         "Berkshire County",
         "Bristol County",
@@ -1272,6 +1261,7 @@
         "Worcester County"
     ],
     "Michigan": [
+        "Select County",
         "Alcona County",
         "Alger County",
         "Allegan County",
@@ -1357,6 +1347,7 @@
         "Wexford County"
     ],
     "Minnesota": [
+        "Select County",
         "Aitkin County",
         "Anoka County",
         "Becker County",
@@ -1446,6 +1437,7 @@
         "Yellow Medicine County"
     ],
     "Mississippi": [
+        "Select County",
         "Adams County",
         "Alcorn County",
         "Amite County",
@@ -1530,6 +1522,7 @@
         "Yazoo County"
     ],
     "Missouri": [
+        "Select County",
         "Adair County",
         "Andrew County",
         "Atchison County",
@@ -1647,6 +1640,7 @@
         "St. Louis city"
     ],
     "Montana": [
+        "Select County",
         "Beaverhead County",
         "Big Horn County",
         "Blaine County",
@@ -1705,6 +1699,7 @@
         "Yellowstone County"
     ],
     "Nebraska": [
+        "Select County",
         "Adams County",
         "Antelope County",
         "Arthur County",
@@ -1800,6 +1795,7 @@
         "York County"
     ],
     "Nevada": [
+        "Select County",
         "Churchill County",
         "Clark County",
         "Douglas County",
@@ -1819,6 +1815,7 @@
         "Carson City"
     ],
     "New Hampshire": [
+        "Select County",
         "Belknap County",
         "Carroll County",
         "Cheshire County",
@@ -1831,6 +1828,7 @@
         "Sullivan County"
     ],
     "New Jersey": [
+        "Select County",
         "Atlantic County",
         "Bergen County",
         "Burlington County",
@@ -1854,6 +1852,7 @@
         "Warren County"
     ],
     "New Mexico": [
+        "Select County",
         "Bernalillo County",
         "Catron County",
         "Chaves County",
@@ -1889,6 +1888,7 @@
         "Valencia County"
     ],
     "New York": [
+        "Select County",
         "Albany County",
         "Allegany County",
         "Bronx County",
@@ -1953,6 +1953,7 @@
         "Yates County"
     ],
     "North Carolina": [
+        "Select County",
         "Alamance County",
         "Alexander County",
         "Alleghany County",
@@ -2055,6 +2056,7 @@
         "Yancey County"
     ],
     "North Dakota": [
+        "Select County",
         "Adams County",
         "Barnes County",
         "Benson County",
@@ -2110,6 +2112,7 @@
         "Williams County"
     ],
     "Ohio": [
+        "Select County",
         "Adams County",
         "Allen County",
         "Ashland County",
@@ -2200,6 +2203,7 @@
         "Wyandot County"
     ],
     "Oklahoma": [
+        "Select County",
         "Adair County",
         "Alfalfa County",
         "Atoka County",
@@ -2279,6 +2283,7 @@
         "Woodward County"
     ],
     "Oregon": [
+        "Select County",
         "Baker County",
         "Benton County",
         "Clackamas County",
@@ -2317,6 +2322,7 @@
         "Yamhill County"
     ],
     "Pennsylvania": [
+        "Select County",
         "Adams County",
         "Allegheny County",
         "Armstrong County",
@@ -2386,6 +2392,7 @@
         "York County"
     ],
     "Rhode Island": [
+        "Select County",
         "Bristol County",
         "Kent County",
         "Newport County",
@@ -2393,6 +2400,7 @@
         "Washington County"
     ],
     "South Carolina": [
+        "Select County",
         "Abbeville County",
         "Aiken County",
         "Allendale County",
@@ -2441,6 +2449,7 @@
         "York County"
     ],
     "South Dakota": [
+        "Select County",
         "Aurora County",
         "Beadle County",
         "Bennett County",
@@ -2509,6 +2518,7 @@
         "Ziebach County"
     ],
     "Tennessee": [
+        "Select County",
         "Anderson County",
         "Bedford County",
         "Benton County",
@@ -2606,6 +2616,7 @@
         "Wilson County"
     ],
     "Texas": [
+        "Select County",
         "Anderson County",
         "Andrews County",
         "Angelina County",
@@ -2862,6 +2873,7 @@
         "Zavala County"
     ],
     "Utah": [
+        "Select County",
         "Beaver County",
         "Box Elder County",
         "Cache County",
@@ -2893,6 +2905,7 @@
         "Weber County"
     ],
     "Vermont": [
+        "Select County",
         "Addison County",
         "Bennington County",
         "Caledonia County",
@@ -2909,6 +2922,7 @@
         "Windsor County"
     ],
     "Virginia": [
+        "Select County",
         "Accomack County",
         "Albemarle County",
         "Alleghany County",
@@ -3044,6 +3058,7 @@
         "Winchester city"
     ],
     "Washington": [
+        "Select County",
         "Adams County",
         "Asotin County",
         "Benton County",
@@ -3085,6 +3100,7 @@
         "Yakima County"
     ],
     "West Virginia": [
+        "Select County",
         "Barbour County",
         "Berkeley County",
         "Boone County",
@@ -3142,6 +3158,7 @@
         "Wyoming County"
     ],
     "Wisconsin": [
+        "Select County",
         "Adams County",
         "Ashland County",
         "Barron County",
@@ -3216,6 +3233,7 @@
         "Wood County"
     ],
     "Wyoming": [
+        "Select County",
         "Albany County",
         "Big Horn County",
         "Campbell County",
