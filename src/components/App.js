@@ -14,7 +14,7 @@ class App extends React.Component {
     recovered: 0,
     selectedCounty: 'Select a county',
     selectedState: "",
-    countiesList: ""
+    countiesList: []
   };
 
   returnCountyList = (selectedState) => {
@@ -28,6 +28,9 @@ class App extends React.Component {
   };
 
   fetchDataByCounty = (selectedCounty) => {
+    selectedCounty = selectedCounty.replace(' County','')
+    selectedCounty = selectedCounty.split(" ").join(" ")
+    selectedCounty = selectedCounty.trim()
     const axiosUrl = "https://disease.sh/v2/jhucsse/counties/" + selectedCounty;
     axios.get(axiosUrl).then((res) => {
       const responseData = res.data;
@@ -65,18 +68,6 @@ class App extends React.Component {
       recovered: countyData.stats.recovered,
     });
   };
-
-  componentDidMount() {
-    axios.get("https://disease.sh/v2/jhucsse/counties/Bay").then((res) => {
-      const responseData = res.data;
-      const countyData = responseData[0];
-      if (countyData) {
-        this.updateCountyData(countyData);
-      } else {
-        console.error("Unable to grab countyData");
-      }
-    });
-  }
 
   render() {
     return (
