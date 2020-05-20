@@ -15,10 +15,8 @@ class StatsCard extends React.Component {
         let statisticClassName = this.state.statisticClass;
 
         if (this.props.color) {
-            divClassName += " " + this.props.color
             statisticClassName += " " + this.props.color
             this.setState({
-                cardClass: divClassName,
                 statisticClass: statisticClassName
             });
         };
@@ -28,7 +26,7 @@ class StatsCard extends React.Component {
         
         return(
 
-        <div className={this.state.cardClass} style = {{textAlign: "center", marginTop: 100}} >
+        <div className={this.state.cardClass} style = {{textAlign: "center", marginTop: 100, backgroundColor: "#181a1b"}} >
             <div className = "ui content">
                 <div className = "header">{this.props.header}</div>
                 <div className = "description">

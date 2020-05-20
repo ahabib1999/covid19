@@ -45,16 +45,16 @@ class SearchBar extends React.Component {
   render() {
     return (
       <Fragment>
-        <div className="ui item" style={{ minWidth: 300 }}>
+        <div className="ui item" style={{ minWidth: 300, backgroundColor: "#181a1b" }}>
           <select
             value={this.props.selectedState}
             onChange={this.props.onStateChange}
-            className="ui fluid search dropdown"
+            className="ui fluid black search dropdown"
           >
             {this.returnStatesList()}
           </select>
         </div>
-        <div className="ui item" style={{ minWidth: 300 }}>
+        <div className="ui item" style={{ minWidth: 300, backgroundColor: "#181a1b" }}>
           <select id = "county"
             value={this.props.selectedCounty}
             onChange={this.props.onCountyChange}

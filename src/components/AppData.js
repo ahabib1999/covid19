@@ -6,7 +6,7 @@ class AppData extends React.Component {
     render() {
         
         return(
-            <div className = "ui centered three stackable cards">
+            <div className = "ui centered three stackable cards" style = {{backgroundColor: "#181a1b"}}>
                 <StatsCard 
                 header = "CONFIRMED"
                 currentStat = {this.props.confirmedCases}
