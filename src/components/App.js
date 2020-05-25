@@ -4,6 +4,7 @@ import Header from "./Header";
 import SearchBar from "./SearchBar";
 import AppData from "./AppData";
 import data from "../data/counties-states-data.json";
+import lineChart from './Chart'
 
 class App extends React.Component {
   state = {
@@ -71,7 +72,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="ui grid" style={{ minHeight: "100vh", backgroundColor: "#181a1b" }}>
+      <div className="ui grid" style={{ minHeight: "100vh"}}>
         <div className="ui three wide column"></div>
         <div
           className="ui ten wide column"
