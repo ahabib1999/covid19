@@ -1,7 +1,7 @@
 import React from 'react';
 import {Line, Bar} from 'react-chartjs-2';
 
-class lineChart extends React.Component { 
+class LineChart extends React.Component { 
 
 
   render() {
@@ -10,22 +10,37 @@ class lineChart extends React.Component {
 
       <div className = "chart">
 
-        <Bar
-          data={
-            labels= ['5/2', '5/9', '5/16', '5/23']
+        <Line
+          data={{
+            labels: ['1/22/20', '1/29/20', '2/5/20', '2/12/20', '2/19/20', '2/26/20', '3/3/20', '3/10/20', '3/17/20', '3/24/20', '3/31/20', '4/7/20', '4/14/20', '4/21/20', '4/28/20', '5/5/20', '5/12/20', '5/19/20'],
             datasets: [
               {
-                label= 'Cases',
+                label: 'Confirmed',
                 data: [
-                  5,
-                  10,
-                  15,
-                  20
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  6,
+                  50,
+                  373,
+                  763,
+                  1038,
+                  1235,
+                  1363,
+                  1446,
+                  1537,
+                  1699
                 ],
-                backgroundColor: "Blue"
-              }
+                fill: false,
+                borderColor: "Blue"
+              },
             ]
-          }
+          }}
           width={100}
           height={50}
           options={{ }}
@@ -35,4 +50,4 @@ class lineChart extends React.Component {
   }
 }
 
-export default lineChart;
+export default LineChart;

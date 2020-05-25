@@ -4,7 +4,7 @@ import Header from "./Header";
 import SearchBar from "./SearchBar";
 import AppData from "./AppData";
 import data from "../data/counties-states-data.json";
-import lineChart from './Chart'
+import LineChart from './Chart'
 
 class App extends React.Component {
   state = {
@@ -90,13 +90,15 @@ class App extends React.Component {
               />
             </div>
           </div>
+           <div className="ui three wide column">
           <AppData
             confirmedCases={this.state.confirmed}
             fatalCases={this.state.deaths}
             recoveredCases={this.state.recovered}
           />
+          </div>
+          <LineChart />
         </div>
-        <div className="ui three wide column"></div>
       </div>
     );
   }
