@@ -1,7 +1,14 @@
 import React from 'react';
 import {Line, Bar} from 'react-chartjs-2';
+import axios from 'axios';
 
-class LineChart extends React.Component { 
+class LineChart extends React.Component {
+
+  getJsonData = () => {
+    const axiosUrl = "https://disease.sh/v2/historical/usacounties/florida?lastdays=7"
+
+    axios.get()
+  }
 
 
   render() {
