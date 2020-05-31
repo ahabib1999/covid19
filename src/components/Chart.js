@@ -4,10 +4,37 @@ import axios from 'axios';
 
 class LineChart extends React.Component {
 
-  getJsonData = () => {
+  getDataObj = () => {
     const axiosUrl = "https://disease.sh/v2/historical/usacounties/florida?lastdays=7"
 
-    axios.get()
+    axios.get(axiosUrl).then((res) => {
+      const response = res;
+
+      if (response) {
+        const dataObject = res.data[0];
+
+        {this.getConfirmedAndDeaths(dataObject)}
+      }
+    });
+  };
+
+  getConfirmedAndDeaths = (dataObject) => {
+
+    const casesObject = dataObject["timeline"];
+
+    const confirmedCasesObj = casesObject["cases"];
+    console.log(confirmedCasesObj);
+
+    const fatalCasesObj = casesObject["deaths"];
+    console.log(fatalCasesObj);
+
+    {this.displayConfirmedCases(confirmedCasesObj)}
+  }
+
+  displayConfirmedCases = (confirmedCasesObj) => {
+
+    const confirmedCasesTimeline = Object.entries(confirmedCasesObj);
+    console.log(confirmedCasesTimeline);
   }
 
 
@@ -15,7 +42,7 @@ class LineChart extends React.Component {
     
     return(
 
-      <div className = "chart">
+      <div onClick = {this.getDataObj} className = "chart">
 
         <Line
           data={{
