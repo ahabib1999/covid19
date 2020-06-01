@@ -4,6 +4,12 @@ import axios from 'axios';
 
 class LineChart extends React.Component {
 
+  state = {
+    timeLineDatesArray: [],
+    confirmedCasesArray: [],
+    fatalCasesArray: []
+  }
+
   getDataObj = () => {
     const axiosUrl = "https://disease.sh/v2/historical/usacounties/florida?lastdays=7"
 
@@ -28,50 +34,51 @@ class LineChart extends React.Component {
     const fatalCasesObj = casesObject["deaths"];
     console.log(fatalCasesObj);
 
-    {this.displayConfirmedCases(confirmedCasesObj)}
+    {this.UpdateConfirmedAndFatalCases(confirmedCasesObj, fatalCasesObj)}
   }
 
-  displayConfirmedCases = (confirmedCasesObj) => {
+  UpdateConfirmedAndFatalCases = async (confirmedCasesObj, fatalCasesObj) => {
 
-    const confirmedCasesTimeline = Object.entries(confirmedCasesObj);
-    console.log(confirmedCasesTimeline);
-  }
+    await this.setState({
+      timeLineDatesArray: Object.keys(confirmedCasesObj),
+      confirmedCasesArray: Object.values(confirmedCasesObj),
+      fatalCasesArray: Object.values(fatalCasesObj)
+    });
+  };
 
 
   render() {
     
     return(
 
-      <div onClick = {this.getDataObj} className = "chart">
+      <div style={{marginTop: 20}} onClick = {this.getDataObj} className = "chart">
 
         <Line
           data={{
-            labels: ['1/22/20', '1/29/20', '2/5/20', '2/12/20', '2/19/20', '2/26/20', '3/3/20', '3/10/20', '3/17/20', '3/24/20', '3/31/20', '4/7/20', '4/14/20', '4/21/20', '4/28/20', '5/5/20', '5/12/20', '5/19/20'],
+            labels: this.state.timeLineDatesArray,
             datasets: [
               {
                 label: 'Confirmed',
-                data: [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  6,
-                  50,
-                  373,
-                  763,
-                  1038,
-                  1235,
-                  1363,
-                  1446,
-                  1537,
-                  1699
-                ],
+                data: this.state.confirmedCasesArray,
                 fill: false,
                 borderColor: "Blue"
+              },
+            ]
+          }}
+          width={100}
+          height={50}
+          options={{ }}
+        />
+
+        <Line 
+          data={{
+            labels: this.state.timeLineDatesArray,
+            datasets: [
+              {
+                label: 'Deaths',
+                data: this.state.fatalCasesArray,
+                fill: false,
+                backgroundColor: "Red"
               },
             ]
           }}
