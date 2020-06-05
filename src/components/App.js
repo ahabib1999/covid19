@@ -4,7 +4,7 @@ import Header from "./Header";
 import SearchBar from "./SearchBar";
 import AppData from "./AppData";
 import data from "../data/counties-states-data.json";
-import LineChart from './Chart'
+import LineChart from "./Chart";
 
 class App extends React.Component {
   state = {
@@ -13,9 +13,9 @@ class App extends React.Component {
     confirmed: 0,
     deaths: 0,
     recovered: 0,
-    selectedCounty: 'Select County',
+    selectedCounty: "Select County",
     selectedState: "Select State",
-    countiesList: []
+    countiesList: [],
   };
 
   returnCountyList = (selectedState) => {
@@ -24,14 +24,14 @@ class App extends React.Component {
     countiesArray = data[selectedState];
 
     this.setState({
-      countiesList: countiesArray 
+      countiesList: countiesArray,
     });
   };
 
   fetchDataByCounty = (selectedCounty) => {
-    selectedCounty = selectedCounty.replace(' County','')
-    selectedCounty = selectedCounty.split(" ").join(" ")
-    selectedCounty = selectedCounty.trim()
+    selectedCounty = selectedCounty.replace(" County", "");
+    selectedCounty = selectedCounty.split(" ").join(" ");
+    selectedCounty = selectedCounty.trim();
     const axiosUrl = "https://disease.sh/v2/jhucsse/counties/" + selectedCounty;
     axios.get(axiosUrl).then((res) => {
       const responseData = res.data;
@@ -39,7 +39,7 @@ class App extends React.Component {
       if (countyData) {
         this.updateCountyData(countyData);
       } else {
-        alert("This is not a correct county, select another county")
+        alert("This is not a correct county, select another county");
       }
     });
   };
@@ -49,7 +49,7 @@ class App extends React.Component {
       selectedState: event.target.value,
     });
 
-    this.returnCountyList(this.state.selectedState)
+    this.returnCountyList(this.state.selectedState);
   };
 
   handleCountyChange = async (event) => {
@@ -72,7 +72,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="ui grid" style={{ minHeight: "100vh"}}>
+      <div className="ui grid" style={{ minHeight: "100vh" }}>
         <div className="ui three wide column"></div>
         <div
           className="ui ten wide column"
@@ -85,19 +85,19 @@ class App extends React.Component {
                 selectedState={this.state.selectedState}
                 selectedCounty={this.state.selectedCounty}
                 onCountyChange={this.handleCountyChange}
-                onStateChange = {this.handleStateChange}
-                countiesList = {this.state.countiesList}
+                onStateChange={this.handleStateChange}
+                countiesList={this.state.countiesList}
               />
             </div>
           </div>
-           <div className="ui three wide column">
-          <AppData
-            confirmedCases={this.state.confirmed}
-            fatalCases={this.state.deaths}
-            recoveredCases={this.state.recovered}
-          />
+          <div className="ui three wide column">
+            <AppData
+              confirmedCases={this.state.confirmed}
+              fatalCases={this.state.deaths}
+              recoveredCases={this.state.recovered}
+            />
           </div>
-          <LineChart />
+          <LineChart selectedState={this.state.selectedState} selectedCounty={this.state.selectedCounty} />
         </div>
       </div>
     );

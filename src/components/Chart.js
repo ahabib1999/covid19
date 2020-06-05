@@ -1,93 +1,124 @@
-import React from 'react';
-import {Line, Bar} from 'react-chartjs-2';
-import axios from 'axios';
+import React, { Fragment } from "react";
+import { Line, Bar } from "react-chartjs-2";
+import axios from "axios";
 
 class LineChart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   state = {
     timeLineDatesArray: [],
     confirmedCasesArray: [],
-    fatalCasesArray: []
+    fatalCasesArray: [],
+  };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.selectedCounty != prevProps.selectedCounty) {
+      if (
+        this.props.selectedCounty != "" &&
+        this.props.selectedCounty != "Select County"
+      ) {
+        this.getDataObj();
+      }
+    }
   }
 
   getDataObj = () => {
-    const axiosUrl = "https://disease.sh/v2/historical/usacounties/florida?lastdays=7"
+    const axiosUrl = `https://disease.sh/v2/historical/usacounties/${this.props.selectedState.toLowerCase()}?lastdays=all`;
 
     axios.get(axiosUrl).then((res) => {
-      const response = res;
+      if (res) {
+        const dataObjectsArray = res.data;
 
-      if (response) {
-        const dataObject = res.data[0];
-
-        {this.getConfirmedAndDeaths(dataObject)}
+        this.getConfirmedAndDeaths(dataObjectsArray);
       }
     });
   };
 
-  getConfirmedAndDeaths = (dataObject) => {
+  getConfirmedAndDeaths = (dataObjectsArray) => {
+    // Extract correct county object
+    var selectedCounty = this.props.selectedCounty;
+    selectedCounty = selectedCounty.replace(" County", "");
+    selectedCounty = selectedCounty.split(" ").join(" ");
+    selectedCounty = selectedCounty.trim();
 
-    const casesObject = dataObject["timeline"];
+    for (var i = 0; i < dataObjectsArray.length;i ++) {
+      const currentCounty = dataObjectsArray[i]["county"];
 
-    const confirmedCasesObj = casesObject["cases"];
-    console.log(confirmedCasesObj);
+      if (currentCounty === selectedCounty.toLowerCase()) {
+        const selectedObject = dataObjectsArray.find(dataObject => dataObject.county == currentCounty);
 
-    const fatalCasesObj = casesObject["deaths"];
-    console.log(fatalCasesObj);
+        const casesObject = selectedObject["timeline"];
+    
+        const confirmedCasesObj = casesObject["cases"];
+    
+        const fatalCasesObj = casesObject["deaths"];
 
-    {this.UpdateConfirmedAndFatalCases(confirmedCasesObj, fatalCasesObj)}
-  }
+        this.updateConfirmedAndFatalCases(confirmedCasesObj, fatalCasesObj);
+      }
+    }
+  };
 
-  UpdateConfirmedAndFatalCases = async (confirmedCasesObj, fatalCasesObj) => {
-
-    await this.setState({
+  updateConfirmedAndFatalCases = async (confirmedCasesObj, fatalCasesObj) => {
+    this.setState({
       timeLineDatesArray: Object.keys(confirmedCasesObj),
       confirmedCasesArray: Object.values(confirmedCasesObj),
-      fatalCasesArray: Object.values(fatalCasesObj)
+      fatalCasesArray: Object.values(fatalCasesObj),
     });
   };
 
-
-  render() {
-    
-    return(
-
-      <div style={{marginTop: 20}} onClick = {this.getDataObj} className = "chart">
+  displayConfirmedAndFatalCharts = () => {
+    return (
+      <div style={{ marginTop: 20 }} className="chart">
+        <Line
+          data={{
+            labels: this.state.timeLineDatesArray,
+            datasets: [
+              {
+                label: "Confirmed",
+                data: this.state.confirmedCasesArray,
+                fill: false,
+                borderColor: "Blue",
+              },
+            ],
+          }}
+          width={100}
+          height={50}
+          options={{}}
+        />
 
         <Line
           data={{
             labels: this.state.timeLineDatesArray,
             datasets: [
               {
-                label: 'Confirmed',
-                data: this.state.confirmedCasesArray,
-                fill: false,
-                borderColor: "Blue"
-              },
-            ]
-          }}
-          width={100}
-          height={50}
-          options={{ }}
-        />
-
-        <Line 
-          data={{
-            labels: this.state.timeLineDatesArray,
-            datasets: [
-              {
-                label: 'Deaths',
+                label: "Deaths",
                 data: this.state.fatalCasesArray,
                 fill: false,
-                backgroundColor: "Red"
+                borderColor: "Red",
               },
-            ]
+            ],
           }}
           width={100}
           height={50}
-          options={{ }}
+          options={{}}
         />
       </div>
-    )
+    );
+  };
+
+  renderChart = (selectedCounty) => {
+    if (selectedCounty == "" || selectedCounty == "Select County") {
+      return <div></div>;
+    }
+
+    let chartElement = this.displayConfirmedAndFatalCharts();
+    return chartElement;
+  };
+
+  render() {
+    return <Fragment>{this.renderChart(this.props.selectedCounty)}</Fragment>;
   }
 }
 
