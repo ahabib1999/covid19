@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import AppData from "./AppData";
 import data from "../data/counties-states-data.json";
 import LineChart from "./Chart";
+import getUpdatedCountyName from '../common';
 
 class App extends React.Component {
   state = {
@@ -29,9 +30,7 @@ class App extends React.Component {
   };
 
   fetchDataByCounty = (selectedCounty) => {
-    selectedCounty = selectedCounty.replace(" County", "");
-    selectedCounty = selectedCounty.split(" ").join(" ");
-    selectedCounty = selectedCounty.trim();
+    selectedCounty = getUpdatedCountyName(selectedCounty)
     const axiosUrl = "https://disease.sh/v2/jhucsse/counties/" + selectedCounty;
     axios.get(axiosUrl).then((res) => {
       const responseData = res.data;

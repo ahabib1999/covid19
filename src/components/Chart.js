@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Line, Bar } from "react-chartjs-2";
 import axios from "axios";
+import getUpdatedCountyName from '../common';
 
 class LineChart extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class LineChart extends React.Component {
   }
 
   getDataObj = () => {
-    const axiosUrl = `https://disease.sh/v2/historical/usacounties/${this.props.selectedState.toLowerCase()}?lastdays=all`;
+    const axiosUrl = `https://disease.sh/v2/historical/usacounties/${this.props.selectedState.toLowerCase()}?lastdays=100`;
 
     axios.get(axiosUrl).then((res) => {
       if (res) {
@@ -39,9 +40,7 @@ class LineChart extends React.Component {
   getConfirmedAndDeaths = (dataObjectsArray) => {
     // Extract correct county object
     var selectedCounty = this.props.selectedCounty;
-    selectedCounty = selectedCounty.replace(" County", "");
-    selectedCounty = selectedCounty.split(" ").join(" ");
-    selectedCounty = selectedCounty.trim();
+    selectedCounty = getUpdatedCountyName(selectedCounty);
 
     for (var i = 0; i < dataObjectsArray.length;i ++) {
       const currentCounty = dataObjectsArray[i]["county"];
@@ -61,16 +60,25 @@ class LineChart extends React.Component {
   };
 
   updateConfirmedAndFatalCases = async (confirmedCasesObj, fatalCasesObj) => {
+    const tempDatesArray = Object.keys(confirmedCasesObj);
+    const currentDatesArray = [];
+
+    for (var i = 0; i < tempDatesArray.length; i+= 1) {
+      currentDatesArray.push(tempDatesArray[i]);
+    }
+
     this.setState({
-      timeLineDatesArray: Object.keys(confirmedCasesObj),
+      timeLineDatesArray: currentDatesArray,
       confirmedCasesArray: Object.values(confirmedCasesObj),
       fatalCasesArray: Object.values(fatalCasesObj),
     });
   };
 
+  
+
   displayConfirmedAndFatalCharts = () => {
     return (
-      <div style={{ marginTop: 20 }} className="chart">
+      <div style={{ marginTop: 40 }} className="chart">
         <Line
           data={{
             labels: this.state.timeLineDatesArray,
@@ -79,7 +87,7 @@ class LineChart extends React.Component {
                 label: "Confirmed",
                 data: this.state.confirmedCasesArray,
                 fill: false,
-                borderColor: "Blue",
+                borderColor: "#2185d0",
               },
             ],
           }}
@@ -87,6 +95,8 @@ class LineChart extends React.Component {
           height={50}
           options={{}}
         />
+
+        <div style = {{marginTop: 40}}></div>
 
         <Line
           data={{
@@ -96,7 +106,7 @@ class LineChart extends React.Component {
                 label: "Deaths",
                 data: this.state.fatalCasesArray,
                 fill: false,
-                borderColor: "Red",
+                borderColor: "#db2828",
               },
             ],
           }}
