@@ -44,6 +44,9 @@ class App extends React.Component {
   };
 
   handleStateChange = async (event) => {
+    if (event.target.value == "Select State") {
+      return <option>Select State</option>
+    }
     await this.setState({
       selectedState: event.target.value,
     });
