@@ -10,6 +10,7 @@ import getUpdatedCountyName from "../common";
 class App extends React.Component {
   state = {
     country: "",
+    currentState: "",
     county: "",
     confirmed: 0,
     deaths: 0,
@@ -30,11 +31,18 @@ class App extends React.Component {
   };
 
   fetchDataByCounty = (selectedCounty) => {
+    var countyData = "";
     selectedCounty = getUpdatedCountyName(selectedCounty);
     const axiosUrl = "https://disease.sh/v2/jhucsse/counties/" + selectedCounty;
     axios.get(axiosUrl).then((res) => {
       const responseData = res.data;
-      const countyData = responseData[0];
+      for (var i = 0; i < responseData.length; i++) {
+        const currentState = responseData[i]["province"];
+        if (currentState === this.state.selectedState) {
+          countyData = responseData[i];
+          console.log(countyData);
+        }
+      }
       if (countyData) {
         this.updateCountyData(countyData);
       } else {
@@ -44,7 +52,7 @@ class App extends React.Component {
   };
 
   handleStateChange = async (event) => {
-    if (event.target.value == "Select State") {
+    if (event.target.value === "Select State") {
       return <option>Select State</option>
     }
     await this.setState({

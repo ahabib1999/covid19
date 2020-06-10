@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Line, Bar } from "react-chartjs-2";
+import { Line} from "react-chartjs-2";
 import axios from "axios";
 import getUpdatedCountyName from '../common';
 
@@ -15,10 +15,10 @@ class LineChart extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
-    if (this.props.selectedCounty != prevProps.selectedCounty) {
+    if (this.props.selectedCounty !== prevProps.selectedCounty) {
       if (
-        this.props.selectedCounty != "" &&
-        this.props.selectedCounty != "Select County"
+        this.props.selectedCounty !== "" &&
+        this.props.selectedCounty !== "Select County"
       ) {
         this.getDataObj();
       }
@@ -133,7 +133,7 @@ class LineChart extends React.Component {
   };
 
   renderChart = (selectedCounty) => {
-    if (selectedCounty == "" || selectedCounty == "Select County") {
+    if (selectedCounty === "" || selectedCounty == "Select County") {
       return <div></div>;
     }
 

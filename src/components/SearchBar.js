@@ -33,7 +33,7 @@ class SearchBar extends React.Component {
   };
 
   displayCountiesList = (countiesList) => {
-    if (countiesList.length == 0 || this.props.selectedCounty == "") {
+    if (countiesList.length === 0 || this.props.selectedCounty === "") {
       return <option>Select County</option>;
     }
     let countiesArr = countiesList.map((county) => {
@@ -74,7 +74,6 @@ class SearchBar extends React.Component {
             value={this.props.selectedCounty}
             onChange={this.props.onCountyChange}
             className="ui fluid search dropdown"
-            backgroundColor="rgb(24, 26, 28)"
           >
             {this.displayCountiesList(this.props.countiesList)}
           </select>
