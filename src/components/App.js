@@ -73,12 +73,12 @@ class App extends React.Component {
     return (
       <Fragment>
         <div className="ui grid" style={{ minHeight: "100vh" }}>
-          <div className="ui three wide column"></div>
+          <div className="ui one wide column"></div>
           <div
-            className="ui ten wide column"
+            className="ui fourteen wide column"
             style={{ marginTop: "3px", backgroundColor: "" }}
           >
-            <div className="ui inverted huge menu">
+            <div className="ui secondary stackable huge menu">
               <Header />
               <div className="right menu">
                 <SearchBar
@@ -90,7 +90,7 @@ class App extends React.Component {
                 />
               </div>
             </div>
-            <div className="ui three wide column">
+            <div className="ui one wide column">
               <AppData
                 confirmedCases={this.state.confirmed}
                 fatalCases={this.state.deaths}
@@ -101,17 +101,18 @@ class App extends React.Component {
               selectedState={this.state.selectedState}
               selectedCounty={this.state.selectedCounty}
             />
-            
           </div>
         </div>
-        <footer
-        className="footer"
-        >
-          <h3>Copyright &copy; 2020</h3>
-          <br></br>
-          <h3>Source: <a href = "https://corona.lmao.ninja/docs/#/" target="_blank">Novel COVID 19 API</a> </h3>
+        <footer className="footer">
+          <h3>Akbar Habib &copy; 2020</h3>
+          <h3>
+            Source:{" "}
+            <a href="https://corona.lmao.ninja/docs/#/" target="_blank">
+              Novel COVID 19 API
+            </a>{" "}
+          </h3>
         </footer>
-       </Fragment>
+      </Fragment>
     );
   }
 }

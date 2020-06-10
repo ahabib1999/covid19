@@ -22,9 +22,13 @@ class SearchBar extends React.Component {
       );
     });
 
-    statesArr.splice(0, 0, <option key={"Select State"} value={"Select State"}>
-      Select State
-    </option>);
+    statesArr.splice(
+      0,
+      0,
+      <option key={"Select State"} value={"Select State"}>
+        Select State
+      </option>
+    );
     return statesArr;
   };
 
@@ -40,38 +44,37 @@ class SearchBar extends React.Component {
       );
     });
 
-    countiesArr.splice(0, 0, <option key={"Select County"} value={"Select County"}>
-    Select County
-    </option>);
+    countiesArr.splice(
+      0,
+      0,
+      <option key={"Select County"} value={"Select County"}>
+        Select County
+      </option>
+    );
     return countiesArr;
   };
 
   render() {
     return (
       <Fragment>
-        <div
-          className="ui item"
-          style={{ minWidth: 300, backgroundColor: "#181a1b"}}
-        >
+        <div className="ui item">
           <select
+            style={{ borderRadius: 5 }}
             value={this.props.selectedState}
             onChange={this.props.onStateChange}
             className="ui fluid black search dropdown"
-            style = {{borderColor: "rgb(24, 26, 28)"}}
           >
             {this.returnStatesList()}
           </select>
         </div>
-        <div
-          className="ui item"
-          style={{ minWidth: 300, backgroundColor: "rgb(24, 26, 30)" }}
-        >
+        <div className="ui item">
           <select
             id="county"
+            style={{ borderRadius: 5 }}
             value={this.props.selectedCounty}
             onChange={this.props.onCountyChange}
             className="ui fluid search dropdown"
-            backgroundColor = "rgb(24, 26, 28)"
+            backgroundColor="rgb(24, 26, 28)"
           >
             {this.displayCountiesList(this.props.countiesList)}
           </select>

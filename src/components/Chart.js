@@ -93,7 +93,14 @@ class LineChart extends React.Component {
           }}
           width={100}
           height={50}
-          options={{}}
+          options={{
+            legend: {
+              labels: {
+                fontSize: 16,
+                fontStyle: 'bold'
+              }
+            }
+          }}
         />
 
         <div style = {{marginTop: 40}}></div>

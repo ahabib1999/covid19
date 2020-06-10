@@ -28,7 +28,7 @@ class StatsCard extends React.Component {
         
         return(
 
-        <div className={this.state.cardClass} style = {{textAlign: "center", marginTop: 100}} >
+        <div className={this.state.cardClass} style = {{textAlign: "center", marginTop: 20}} >
             <div className = "ui content">
                 <div className = "header">{this.props.header}</div>
                 <div className = "description">
