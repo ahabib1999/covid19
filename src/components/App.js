@@ -40,7 +40,6 @@ class App extends React.Component {
         const currentState = responseData[i]["province"];
         if (currentState === this.state.selectedState) {
           countyData = responseData[i];
-          console.log(countyData);
         }
       }
       if (countyData) {
